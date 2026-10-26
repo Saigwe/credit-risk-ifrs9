@@ -1,0 +1,26 @@
+{
+  "accounts": 30000,
+  "development": 21000,
+  "validation": 9000,
+  "default_rate": 0.2212,
+  "scorecard": {
+    "auc": 0.7561,
+    "gini": 0.5123,
+    "ks": 0.4017,
+    "brier": 0.1395,
+    "mean_pd": 0.2204,
+    "observed_default_rate": 0.2212,
+    "psi_score_dev_vs_validation": 0.0007
+  },
+  "gradient_boosting": {
+    "auc": 0.7754,
+    "gini": 0.5508,
+    "ks": 0.4249,
+    "brier": 0.136,
+    "mean_pd": 0.2204,
+    "observed_default_rate": 0.2212,
+    "psi_pd_dev_vs_validation": 0.0012
+  },
+  "approval_rate_ratio_sex": 0.967,
+  "approval_rate_ratio_age_band": 0.9264
+}

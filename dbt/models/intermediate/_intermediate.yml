@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: int_client_months
+    data_tests:
+      - trust_tests.unique_combination:
+          arguments: {columns: [client_id, statement_month]}
+      - trust_tests.reconciles_to:
+          arguments:
+            to: ref('stg_uci__clients')
+            measures: {total_bill: "sum(bill)"}
+            to_measures: {total_bill: "sum(bill_apr + bill_may + bill_jun + bill_jul + bill_aug + bill_sep)"}

@@ -1,0 +1,11 @@
+feature,iv
+status_current,0.8874
+max_months_past_due_6m,0.7609
+months_delinquent_6m,0.687
+payment_ratio_min_5m,0.4119
+credit_limit,0.1743
+payment_ratio_avg_5m,0.1666
+utilisation_avg_6m,0.1151
+utilisation_trend_6m,0.0741
+utilisation_current,0.0657
+months_paid_in_full_6m,0.0387

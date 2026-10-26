@@ -1,0 +1,35 @@
+name: credit_risk_ifrs9
+version: "0.1.0"
+config-version: 2
+profile: credit_risk_ifrs9
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+target-path: target
+clean-targets: [target, dbt_packages]
+
+vars:
+  # Reporting date: the last statement month in the data.
+  reporting_date: "2005-09-30"
+  # IFRS 9 assumptions. They are inputs, not findings; rpt_ecl_sensitivity shows how much each one moves the ECL.
+  lgd: 0.75                 # loss given default for unsecured card balances
+  ccf: 0.50                 # share of the undrawn limit expected to be drawn by default
+  eir: 0.18                 # effective interest rate, to discount lifetime losses
+  behavioural_life_years: 3 # expected life of a revolving card exposure for lifetime ECL
+  sicr_pd_threshold: 0.30   # SICR: a 12-month PD at or above this moves a performing account to stage 2
+  scenarios:                # forward-looking macro scenarios: weight and PD multiplier
+    upside: {weight: 0.2, pd_multiplier: 0.8}
+    base: {weight: 0.6, pd_multiplier: 1.0}
+    downside: {weight: 0.2, pd_multiplier: 1.6}
+
+models:
+  credit_risk_ifrs9:
+    staging:
+      +schema: silver
+      +materialized: view
+    intermediate:
+      +schema: silver
+      +materialized: table
+    marts:
+      +schema: gold
+      +materialized: table

@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: fct_client_features
+    columns:
+      - name: client_id
+        data_tests: [unique, not_null]
+      - name: utilisation_current
+        data_tests: [not_null]
+  - name: rpt_ecl_by_client
+    columns:
+      - name: client_id
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments: {to: ref('fct_client_features'), field: client_id}
+      - name: stage
+        data_tests:
+          - accepted_values:
+              arguments: {values: [1, 2, 3], quote: false}
+  - name: rpt_ecl_summary
+    data_tests:
+      - trust_tests.reconciles_to:
+          arguments:
+            to: ref('rpt_ecl_by_client')
+            measures: {accounts: "sum(accounts)", ead: "sum(ead)", ecl: "sum(ecl)"}
+            to_measures: {accounts: "count(*)", ead: "sum(ead)", ecl: "sum(ecl)"}
+            tolerance: 3   # the summary rounds each stage to whole units
+  - name: rpt_stage_transition
+    columns:
+      - name: stage_aug
+        data_tests: [unique, not_null]
+  - name: rpt_ecl_sensitivity
+    columns:
+      - name: case_name
+        data_tests: [unique, not_null]

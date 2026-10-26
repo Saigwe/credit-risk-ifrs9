@@ -1,0 +1,7 @@
+credit_risk_ifrs9:
+  target: duckdb
+  outputs:
+    duckdb:
+      type: duckdb
+      path: "{{ env_var('DUCKDB_PATH', '../warehouse/credit.duckdb') }}"
+      threads: 4

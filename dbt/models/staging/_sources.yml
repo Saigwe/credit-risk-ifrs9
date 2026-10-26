@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: bronze
+    tables:
+      - name: uci_credit_clients
+        description: "REAL. UCI Default of Credit Card Clients (Taiwan, Apr-Sep 2005), unchanged."
+  - name: ml
+    schema: ml
+    description: "Written by model/train.py after the feature models build."
+    tables:
+      - name: client_pd
+        description: "One row per client: calibrated 12-month PD and scorecard points."
