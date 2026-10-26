@@ -146,7 +146,7 @@ Change an assumption without editing SQL: `cd dbt && dbt build --select tag:ecl 
 - [ ] Recalibrate the 45+ segment and re-run the fairness check
 - [ ] An out-of-time test on a dataset with more history (Freddie Mac loan-level data needs a free registration)
 - [ ] Databricks version with MLflow model registry
-- [ ] 3-minute Loom walkthrough
+- [ ] 3-minute Loom walkthrough ([script ready](docs/walkthrough.md))
 
 ## Data and licence
 - **Data:** Yeh, I.-C. (2009). *Default of Credit Card Clients* [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C55S3H. CC BY 4.0.
