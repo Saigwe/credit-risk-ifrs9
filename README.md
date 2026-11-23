@@ -20,6 +20,15 @@ At a Big Four firm I built risk-indicator and transaction datasets for tier-1 ba
 | **Why it matters** | Credit and finance get one pipeline from data to allowance, where every account's stage and provision can be traced, and every assumption's effect is visible. |
 | **Proof** | Hold-out Gini 0.51 and KS 0.40, calibrated within a few points per decile, score PSI 0.001. Allowance NT$504M on NT$3.29B of exposure, with coverage rising from 7.8% (stage 1) to 46% (stage 2) to 75% (stage 3). The ECL is recomputed independently in Python for every stage in the tests. See [Numbers](#numbers). |
 
+## Charts
+Rendered from this repo's own results by `charts/make_charts.py` (`make charts`); CI re-renders them on every push.
+
+![Calibration by score decile](docs/charts/calibration.png)
+
+![Information value by feature](docs/charts/information_value.png)
+
+![Default rate and predicted PD by group](docs/charts/fairness.png)
+
 ## Architecture
 ```mermaid
 flowchart LR

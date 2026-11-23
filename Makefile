@@ -4,7 +4,7 @@ DBT_BIN ?= dbt
 DBT = cd dbt && DUCKDB_PATH=../$(DB) $(DBT_BIN)
 UCI = https://archive.ics.uci.edu/static/public/350/default+of+credit+card+clients.zip
 
-.PHONY: all download load features model ecl test clean
+.PHONY: all download load features model ecl test clean charts
 
 all: download load features model ecl test   ## real UCI data -> features -> PD model -> IFRS 9 ECL -> tests
 
@@ -30,3 +30,6 @@ test:
 
 clean:
 	rm -rf warehouse dbt/target dbt/logs dbt/dbt_packages
+
+charts:                                            ## README charts -> docs/charts
+	$(PY) charts/make_charts.py

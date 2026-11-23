@@ -17,3 +17,5 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Full pipeline on the real UCI data (download, features, PD model, IFRS 9 ECL, tests)
         run: make all
+      - name: README charts render from the results
+        run: python charts/make_charts.py
